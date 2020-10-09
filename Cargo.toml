@@ -1,0 +1,11 @@
+[package]
+name = "netseed"
+description = "Your little helper, accepting data from the net"
+version = "0.1.0"
+authors = ["Benjamin Kampmann <ben@gnunicorn.org>"]
+edition = "2018"
+
+[dependencies]
+
+structopt = { version = "0.3", default-features = false }
+async-std = { version = "1.6.5", features = ["attributes"] }
