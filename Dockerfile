@@ -17,6 +17,7 @@ RUN cargo build --release --target x86_64-unknown-linux-musl
 # 2: Copy the exe to an empty Docker image
 FROM scratch
 MAINTAINER Benjamin Kampmann <ben@parity.io>
-COPY --from=builder /usr/src/target/release/netseed .
+WORKDIR /bin
+COPY --from=builder /usr/src/target/x86_64-unknown-linux-musl/release/netseed /bin/netseed
 USER 1000
-CMD [ "./netseed" ]
+ENTRYPOINT [ "/bin/netseed" ]
