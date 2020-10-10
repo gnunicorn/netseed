@@ -59,6 +59,8 @@ async fn main() -> Result<(), String>{
         let mut writer = fs::File::create(next_file).await.map_err(|e| format!("Error creating file: {:}", e))?;
         io::copy(reader, &mut writer).await.map_err(|e| format!("Error writing stream to file: {:}", e))?;
 
+        println!("Received {:?}", next_file);
+
         if let Some(next) = targets.next() {
             next_file = next
         } else {
